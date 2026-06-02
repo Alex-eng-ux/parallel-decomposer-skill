@@ -3,6 +3,18 @@
 Use this template when a user wants formal cards for parallel workers.
 
 ```markdown
+## Handoff Brief
+
+Original goal: {Goal all workers are helping complete}
+Shared context: {Facts, constraints, decisions, and vocabulary every worker needs}
+Relevant files or data: {Paths, links, datasets, or artifacts}
+Non-goals: {What workers should not spend time on}
+Final deliverable: {What the merged result should become}
+
+Worker rule: Read this handoff brief before starting your assigned subtask.
+
+---
+
 ## Subtask {N}: {Title}
 
 Complexity: {Low/Medium/High}
@@ -10,10 +22,10 @@ Estimated time: {X minutes/hours}
 Worker type: {Generalist/Specialist/Expert}
 
 ### Context
-{Minimum sufficient background for an isolated agent. Include the original goal, relevant files or data, hard constraints, and known decisions.}
+Read the Handoff Brief first. {Minimum task-specific background for this isolated agent. Include only context that differs from the shared brief.}
 
 ### Prompt
-{Specific, copy-paste-ready instruction. State what to analyze or create, what to focus on, what to ignore, and any checklist the worker must follow.}
+{Specific, copy-paste-ready instruction. Remind the worker to consult the Handoff Brief, then state what to analyze or create, what to focus on, what to ignore, and any checklist the worker must follow.}
 
 ### Output Format
 {Exact structure the worker should return. Include headings, tables, bullets, severity levels, or examples if needed.}

@@ -27,13 +27,19 @@ Use this skill to turn one complex request into a small set of independent worke
    - If two subtasks would produce conflicting edits to the same file or section, merge them or assign one as owner and the other as reviewer.
    - If integration looks harder than doing the work sequentially, warn the user and propose a smaller split.
 
-4. Write compact, self-contained task cards.
+4. Create a handoff brief before task cards.
+   - Include the original goal, shared assumptions, relevant files or links, constraints, non-goals, naming conventions, and expected final deliverable.
+   - Keep the brief short enough to paste at the top of every fresh agent thread.
+   - If workers will use the same workspace, recommend saving the brief as `HANDOFF.md` or `AGENT_HANDOFF.md` in the project root.
+   - Tell every worker prompt to read the handoff brief first and treat it as shared context.
+
+5. Write compact, self-contained task cards.
    - Include only the context each worker needs, not every detail from the original conversation.
    - State the subtask focus, exclusions, inputs, deliverables, success criteria, and expected output format.
    - Make each prompt copy-paste-ready for a fresh agent or fresh Codex thread.
    - Include an estimated complexity and worker type when useful.
 
-5. Provide a merge plan.
+6. Provide a merge plan.
    - Explain how to combine the worker results.
    - Name likely duplicates or contradictions to resolve.
    - Provide a final integration prompt when the user will paste results back into another agent.
@@ -46,11 +52,19 @@ Use this structure unless the user asks for another format:
 Optimal workers: {N}
 Parallelization risk: {Low/Medium/High} - {one-sentence reason}
 
+## Handoff Brief
+- Original goal: {goal}
+- Shared context: {facts every worker needs}
+- Relevant files or data: {paths, links, datasets}
+- Constraints and non-goals: {limits}
+- Expected final deliverable: {final shape}
+- Worker rule: Read this handoff brief before starting your subtask.
+
 ## Subtask 1: {Title}
 - Complexity: {Low/Medium/High}
 - Worker type: {Generalist/Specialist/Expert}
-- Context: {minimum sufficient background}
-- Prompt: {copy-paste-ready instruction}
+- Context: Read the Handoff Brief first. {minimum task-specific background}
+- Prompt: {copy-paste-ready instruction that reminds the worker to consult the Handoff Brief}
 - Output format: {exact return shape}
 - Success criteria: {completion checks}
 
@@ -86,4 +100,5 @@ When warning, still offer the smallest useful split, such as "research first, th
 - Read `references/decomposition-patterns.md` when the domain or split strategy is unclear.
 - Read `references/dependency-checker.md` when subtasks might have hidden ordering or ownership dependencies.
 - Read `references/integration-guide.md` when the merge step is complex or high risk.
+- Use `assets/handoff-brief-template.md` when the user wants to save shared context for fresh agent threads.
 - Use `assets/subtask-card-template.md` when the user wants a reusable template or a more formal task-card format.
