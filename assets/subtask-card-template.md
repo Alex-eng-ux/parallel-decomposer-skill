@@ -1,75 +1,44 @@
 # Subtask Card Template
 
-Copy and fill in for each parallel subtask:
+Use this template when a user wants formal cards for parallel workers.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ SUBTASK {N}: {Title}                                        │
-├─────────────────────────────────────────────────────────────┤
-│ Complexity: {Low/Medium/High}                               │
-│ Estimated Time: {X minutes/hours}                           │
-│ Worker Type: {Generalist/Specialist/Expert}                 │
-├─────────────────────────────────────────────────────────────┤
-│ CONTEXT (paste into agent window first):                    │
-│                                                             │
-│ {All background information the agent needs:}               │
-│ - Original task description                                 │
-│ - Relevant files or data                                    │
-│ - Constraints and requirements                              │
-│ - What has already been done                                │
-│                                                             │
-├─────────────────────────────────────────────────────────────┤
-│ PROMPT (copy-paste ready):                                  │
-│                                                             │
-│ {Specific instruction. Include:}                            │
-│ - What to analyze or create                                 │
-│ - What to focus on                                          │
-│ - What to ignore (scope exclusion)                          │
-│ - Specific checklist or criteria                            │
-│                                                             │
-├─────────────────────────────────────────────────────────────┤
-│ OUTPUT FORMAT:                                              │
-│                                                             │
-│ {Exactly what the agent should return:}                     │
-│ - Structure (bullet points, sections, table)                │
-│ - Level of detail                                           │
-│ - Examples if helpful                                       │
-│                                                             │
-│ SUCCESS CRITERIA:                                           │
-│                                                             │
-│ {How to know the subtask is complete:}                      │
-│ - Specific deliverables                                     │
-│ - Quality thresholds                                        │
-│ - Completeness checks                                       │
-└─────────────────────────────────────────────────────────────┘
+```markdown
+## Subtask {N}: {Title}
+
+Complexity: {Low/Medium/High}
+Estimated time: {X minutes/hours}
+Worker type: {Generalist/Specialist/Expert}
+
+### Context
+{Minimum sufficient background for an isolated agent. Include the original goal, relevant files or data, hard constraints, and known decisions.}
+
+### Prompt
+{Specific, copy-paste-ready instruction. State what to analyze or create, what to focus on, what to ignore, and any checklist the worker must follow.}
+
+### Output Format
+{Exact structure the worker should return. Include headings, tables, bullets, severity levels, or examples if needed.}
+
+### Success Criteria
+- {Specific deliverable}
+- {Quality threshold}
+- {Completeness check}
 ```
 
 ## Integration Template
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ RESULT INTEGRATION TEMPLATE                                 │
-├─────────────────────────────────────────────────────────────┤
-│ Paste all subtask results below, then ask the agent to:     │
-│                                                             │
-│ 1. DEDUPLICATE: Remove overlapping content across results   │
-│ 2. HARMONIZE: Resolve any contradictions                    │
-│ 3. SEQUENCE: Order outputs logically                        │
-│ 4. ENRICH: Add cross-references between sections            │
-│ 5. FINALIZE: Produce unified output in {format}             │
-├─────────────────────────────────────────────────────────────┤
-│ INTEGRATION PROMPT (copy-paste ready):                      │
-│                                                             │
-│ I have {N} parallel subtask results below. Please:          │
-│                                                             │
-│ 1. Read and understand all results                          │
-│ 2. Remove duplicate findings                                │
-│ 3. Resolve any contradictions with reasoning                │
-│ 4. Organize into a coherent {output_type}                   │
-│ 5. Add transitions and cross-references                     │
-│ 6. Produce final unified output                             │
-│                                                             │
-│ RESULTS:                                                    │
-│ {paste all subtask outputs here}                            │
-└─────────────────────────────────────────────────────────────┘
+```markdown
+# Integration Prompt
+
+I have {N} parallel subtask results below. Combine them into one coherent {output_type}.
+
+Please:
+1. Read all results.
+2. Remove duplicate findings.
+3. Resolve contradictions with brief reasoning.
+4. Preserve important dissent or uncertainty.
+5. Organize the final output in this order: {desired_order}.
+6. Produce the final unified deliverable.
+
+Subtask results:
+{paste all subtask outputs here}
 ```

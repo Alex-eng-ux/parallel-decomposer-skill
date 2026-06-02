@@ -9,7 +9,7 @@ Subtask B needs Subtask A's output as input.
 
 **Resolution**:
 - Merge into sequential subtask
-- Or create Phase 1 (A) → Phase 2 (B+C parallel)
+- Or create Phase 1 (A) -> Phase 2 (B+C parallel)
 
 ### 2. Resource Dependencies
 Two subtasks need the same exclusive resource.
