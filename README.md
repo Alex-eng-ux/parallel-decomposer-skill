@@ -20,10 +20,11 @@ Use the original skill when you want visible worker prompts and manual control. 
 - Produces orchestration-ready worker specs instead of emphasizing copy-paste windows
 - Assumes automatic sub-agent dispatch when available
 - Falls back to manual prompts only when the runtime cannot orchestrate workers
+- Uses phased sequencing instead of forcing unsafe parallel edits
 
 ## What It Does
 
-These skills help you break down complex work into 3-7 independent subtasks that can run in parallel. They handle:
+These skills help break complex work into 3-7 independent subtasks that can run in parallel. They handle:
 
 - Task analysis: understand the domain, goal, and constraints
 - Smart decomposition: split work into independent units
@@ -42,6 +43,17 @@ For code-specific parallel analysis, use [code-analyzer-suite](https://github.co
 ```bash
 ./install.sh
 ```
+
+The quick installer targets the original `parallel-decomposer-skill`. Install `parallel-decomposer-auto` as a separate skill directory when your runtime supports auto-discovery of multiple skills.
+
+### Install Auto Skill
+
+```bash
+cp -R parallel-decomposer-auto ~/.codex/skills/parallel-decomposer-auto
+cp -R parallel-decomposer-auto ~/.agents/skills/parallel-decomposer-auto
+```
+
+Use the first path for Codex and the second path for universal agent runtimes. On Windows, copy `parallel-decomposer-auto` to the matching skills directory for your tool.
 
 ### Manual Install
 
@@ -89,17 +101,20 @@ Use $parallel-decomposer-auto to split this work into orchestration-ready worker
 
 ```text
 parallel-decomposer-skill/
-├── SKILL.md
-├── parallel-decomposer-auto/
-│   ├── SKILL.md
-│   ├── agents/openai.yaml
-│   ├── assets/worker-spec-template.md
-│   └── references/orchestration-patterns.md
-├── agents/
-├── assets/
-├── references/
-├── scripts/
-└── evals/
+|-- SKILL.md
+|-- AGENTS.md
+|-- parallel-decomposer-auto/
+|   |-- SKILL.md
+|   |-- AGENTS.md
+|   |-- agents/openai.yaml
+|   |-- assets/worker-spec-template.md
+|   |-- references/orchestration-patterns.md
+|   `-- evals/parallel-decomposer-auto.eval.md
+|-- agents/
+|-- assets/
+|-- references/
+|-- scripts/
+`-- evals/
 ```
 
 ## License

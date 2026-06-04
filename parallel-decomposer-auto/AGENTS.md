@@ -15,13 +15,15 @@ This skill activates when the user:
 
 ## Usage
 
-1. Identify the final deliverable, constraints, relevant files, and non-goals
+1. Infer the final deliverable, constraints, relevant files, and non-goals from context
 2. Choose a split strategy that minimizes dependency and ownership conflicts
 3. Create one shared handoff brief
 4. Generate one worker spec per independent subtask
 5. Dispatch worker specs automatically when the runtime supports it
 6. Fall back to copy-paste-ready prompts when automatic dispatch is unavailable
 7. Merge results using the provided merge strategy
+
+Ask for clarification only when missing scope, write ownership, or sequencing constraints would make automatic dispatch risky.
 
 ## Output
 
