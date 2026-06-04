@@ -1,49 +1,52 @@
 # parallel-decomposer-skill
 
-A cross-platform agent skill for decomposing complex tasks into parallel subtasks optimized for multi-agent execution.
+This repository contains two related skills:
+
+- `parallel-decomposer-skill`: the original version, optimized for explicit task cards and manual multi-window workflows.
+- `parallel-decomposer-auto`: the auto-orchestration version, optimized for runtimes that can dispatch sub-agents or worker threads automatically.
+
+Use the original skill when you want visible worker prompts and manual control. Use the auto version when the runtime can orchestrate parallel workers directly.
+
+## Skills In This Repo
+
+### `parallel-decomposer-skill`
+
+- Splits complex work into structured task cards
+- Includes dependency checks, handoff brief generation, and merge guidance
+- Works well for manual multi-window or hybrid workflows
+
+### `parallel-decomposer-auto`
+
+- Produces orchestration-ready worker specs instead of emphasizing copy-paste windows
+- Assumes automatic sub-agent dispatch when available
+- Falls back to manual prompts only when the runtime cannot orchestrate workers
 
 ## What It Does
 
-This skill helps you break down complex work into 3-7 independent subtasks that can run simultaneously across multiple agent windows. It handles:
+These skills help you break down complex work into 3-7 independent subtasks that can run in parallel. They handle:
 
-- **Task Analysis** — Understanding your complex task's domain, objectives, and constraints
-- **Smart Decomposition** — Breaking work into independent parallel pieces
-- **Dependency Detection** — Ensuring subtasks don't depend on each other
-- **Context Preservation** — Including all necessary background in each subtask card
-- **Result Integration** — Providing templates to merge parallel outputs into unified results
+- Task analysis: understand the domain, goal, and constraints
+- Smart decomposition: split work into independent units
+- Dependency detection: avoid hidden ordering or file-ownership conflicts
+- Context preservation: keep a shared handoff brief across workers
+- Result integration: provide a merge strategy for the final result
 
 ## Related Skill
 
-For code-specific parallel analysis (Security, Performance, Code Quality, Architecture, Logic Verification), use [code-analyzer-suite](https://github.com/Alex-eng-ux/code-analyzer-suite) instead. This skill focuses on general-purpose task decomposition.
+For code-specific parallel analysis, use [code-analyzer-suite](https://github.com/Alex-eng-ux/code-analyzer-suite).
 
 ## Installation
 
-### Quick Install (Auto-detect)
+### Quick Install
 
 ```bash
 ./install.sh
 ```
 
-### Install to Specific Platform
-
-```bash
-./install.sh --platform claude
-./install.sh --platform cursor
-./install.sh --platform windsurf
-```
-
-### Install to All Detected Platforms
-
-```bash
-./install.sh --all
-```
-
 ### Manual Install
 
-Copy this directory to your tool's native skills path:
-
 | Platform | Path |
-|----------|------|
+| --- | --- |
 | Claude Code | `~/.claude/skills/parallel-decomposer-skill` |
 | GitHub Copilot | `~/.copilot/skills/parallel-decomposer-skill` |
 | VS Code Copilot | `.github/skills/parallel-decomposer-skill` |
@@ -59,73 +62,44 @@ Copy this directory to your tool's native skills path:
 
 ## Usage
 
-Once installed, invoke with:
+### Original Skill
 
-```
+```text
 /parallel-decomposer Analyze this codebase for security vulnerabilities, performance issues, and code quality
-```
-
-### Example Invocations
-
-```
 /parallel-decomposer Write a comprehensive report about AI trends covering technical, business, and ethical aspects
 /parallel-decomposer Review this pull request for logic errors, style issues, and documentation completeness
-/parallel-decomposer Research the competitive landscape: product features, pricing, market share, and customer reviews
-/parallel-decomposer Build a marketing campaign: content strategy, social media, email sequences, and landing pages
 ```
 
-### Natural Activation
+### Auto Skill
 
-You can also activate without the slash prefix:
-
-```
-Break this into parallel tasks
-Decompose this for multiple agents
-Split this work so we can parallelize it
-I need to run these in separate agent windows
-Divide and conquer this project
+```text
+Use $parallel-decomposer-auto to split this work into orchestration-ready worker specs with a shared handoff brief and merge plan.
 ```
 
 ## How It Works
 
-1. **You provide** a complex task
-2. **Skill analyzes** and decomposes into independent subtasks
-3. **Skill outputs** structured subtask cards with full context
-4. **You copy** each card to separate agent windows
-5. **You paste** results back
-6. **Skill provides** integration template to merge results
+1. You provide a complex task.
+2. The skill analyzes the task and identifies a useful split.
+3. The skill creates a shared handoff brief.
+4. The runtime dispatches worker specs to sub-agents when supported.
+5. Fallback: if automatic dispatch is unavailable, you can still copy prompts manually.
+6. The skill provides a merge strategy for the final result.
 
-## Skill Structure
+## Repository Structure
 
-```
+```text
 parallel-decomposer-skill/
-├── SKILL.md              # Core workflow definition (for agents)
-├── AGENTS.md             # Cross-platform agent instructions
-├── README.md             # This file
-├── install.sh            # Cross-platform installer
-├── scripts/
-│   ├── check_pipeline.py # Validate skill structure
-│   ├── validate.py       # Spec validation (frontmatter, naming)
-│   └── security_scan.py  # Security scan for secrets
-├── references/
-│   ├── decomposition-patterns.md  # Domain-specific strategies
-│   ├── integration-guide.md       # Result merging techniques
-│   └── dependency-checker.md      # Dependency detection guide
+├── SKILL.md
+├── parallel-decomposer-auto/
+│   ├── SKILL.md
+│   ├── agents/openai.yaml
+│   ├── assets/worker-spec-template.md
+│   └── references/orchestration-patterns.md
+├── agents/
 ├── assets/
-│   ├── handoff-brief-template.md  # Shared context template for workers
-│   └── subtask-card-template.md   # Reusable subtask card format
+├── references/
+├── scripts/
 └── evals/
-    └── parallel-decomposer.eval.md # Evaluation spec
-```
-
-## Validation
-
-Run the built-in validation:
-
-```bash
-python3 scripts/validate.py .
-python3 scripts/security_scan.py .
-python3 scripts/check_pipeline.py .
 ```
 
 ## License
