@@ -12,6 +12,10 @@ This skill helps you break down complex work into 3-7 independent subtasks that 
 - **Context Preservation** — Including all necessary background in each subtask card
 - **Result Integration** — Providing templates to merge parallel outputs into unified results
 
+## Related Skill
+
+For code-specific parallel analysis (Security, Performance, Code Quality, Architecture, Logic Verification), use [code-analyzer-suite](https://github.com/Alex-eng-ux/code-analyzer-suite) instead. This skill focuses on general-purpose task decomposition.
+
 ## Installation
 
 ### Quick Install (Auto-detect)
@@ -82,7 +86,7 @@ I need to run these in separate agent windows
 Divide and conquer this project
 ```
 
-## Workflow
+## How It Works
 
 1. **You provide** a complex task
 2. **Skill analyzes** and decomposes into independent subtasks
@@ -95,8 +99,8 @@ Divide and conquer this project
 
 ```
 parallel-decomposer-skill/
-├── SKILL.md              # Main skill definition and workflow
-├── AGENTS.md             # Cross-platform companion instructions
+├── SKILL.md              # Core workflow definition (for agents)
+├── AGENTS.md             # Cross-platform agent instructions
 ├── README.md             # This file
 ├── install.sh            # Cross-platform installer
 ├── scripts/
@@ -108,25 +112,11 @@ parallel-decomposer-skill/
 │   ├── integration-guide.md       # Result merging techniques
 │   └── dependency-checker.md      # Dependency detection guide
 ├── assets/
-│   └── subtask-card-template.md   # Reusable card template
+│   ├── handoff-brief-template.md  # Shared context template for workers
+│   └── subtask-card-template.md   # Reusable subtask card format
 └── evals/
     └── parallel-decomposer.eval.md # Evaluation spec
 ```
-
-## Decomposition Patterns
-
-The skill supports multiple decomposition dimensions:
-
-| Pattern | When to Use | Example |
-|---------|-------------|---------|
-| **By Aspect** | Multiple independent facets | Security + Performance + Quality |
-| **By Component** | Distinct parts | Frontend + Backend + Database |
-| **By Stage** | Sequential phases | Research → Draft → Review |
-| **By Audience** | Different stakeholders | Executive + Technical + User |
-| **By Geography** | Multiple regions | NA + Europe + Asia analysis |
-| **By Methodology** | Different approaches | Stats + ML + Heuristic |
-
-See `references/decomposition-patterns.md` for detailed domain-specific strategies.
 
 ## Validation
 
