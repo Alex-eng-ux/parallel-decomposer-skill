@@ -36,6 +36,23 @@ These skills help break complex work into 3-7 independent subtasks that can run 
 
 For code-specific parallel analysis, use [code-analyzer-suite](https://github.com/Alex-eng-ux/code-analyzer-suite).
 
+For an implementation loop that uses this repository as its decomposition layer, see [iterative-implementation-review](https://github.com/Alex-eng-ux/iterative-implementation-review).
+
+If you want the full packaged workflow, see [implementation-workflows](https://github.com/Alex-eng-ux/implementation-workflows).
+
+## Relationship To The Other Repositories
+
+This repository answers the question:
+
+- how should complex work be split safely?
+
+The companion repositories answer different questions:
+
+- `code-analyzer-suite`: how should changed code be reviewed?
+- `iterative-implementation-review`: how should implementation, review, repair, and verification be looped together?
+
+That separation is intentional. This repository should stay focused on decomposition rather than absorbing review or final readiness logic.
+
 ## Installation
 
 ### Quick Install
