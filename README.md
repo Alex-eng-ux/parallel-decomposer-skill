@@ -7,6 +7,15 @@ This repository contains two related skills:
 
 Use the original skill when you want visible worker prompts and manual control. Use the auto version when the runtime can orchestrate parallel workers directly.
 
+## Which Version Should You Use?
+
+| Variant | Use it when | Avoid it when |
+| --- | --- | --- |
+| `parallel-decomposer-skill` | You want explicit task cards, manual multi-window work, or visible handoff prompts | Your runtime can already dispatch workers automatically and you want orchestration-ready output |
+| `parallel-decomposer-auto` | Your runtime can dispatch sub-agents or worker threads and you want machine-oriented worker specs | You need copy-paste-friendly task cards or you are working in a manual environment |
+
+The subject matter is the same in both versions. The difference is the execution model: visible manual decomposition versus auto-oriented dispatch planning.
+
 ## Skills In This Repo
 
 ### `parallel-decomposer-skill`
@@ -52,6 +61,14 @@ The companion repositories answer different questions:
 - `iterative-implementation-review`: how should implementation, review, repair, and verification be looped together?
 
 That separation is intentional. This repository should stay focused on decomposition rather than absorbing review or final readiness logic.
+
+## Repository Roles At A Glance
+
+| Repository | Primary job | Typical output |
+| --- | --- | --- |
+| `parallel-decomposer-skill` | split work safely | task cards or worker specs |
+| `code-analyzer-suite` | review changed code | findings and severity-ranked risks |
+| `iterative-implementation-review` | keep looping until the implementation survives review | repaired implementation plus verification status |
 
 ## Installation
 
