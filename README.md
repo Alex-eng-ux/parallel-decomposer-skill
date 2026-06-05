@@ -16,6 +16,19 @@ Use the original skill when you want visible worker prompts and manual control. 
 
 The subject matter is the same in both versions. The difference is the execution model: visible manual decomposition versus auto-oriented dispatch planning.
 
+## Workflow Generations
+
+This repository participates in a broader workflow lineage:
+
+1. Generation 1: the manual workflow stack
+   `parallel-decomposer-skill` plus `code-analyzer-suite`, `grill-me`, and `iterative-implementation-review`
+2. Generation 2: the auto-capable workflow stack
+   `parallel-decomposer-auto` plus `code-analyzer-auto`, `grill-me`, and `iterative-implementation-review-auto`
+3. Final integrated distribution
+   `implementation-workflows`, which packages both the standard and auto paths into one workflow suite
+
+In that lineage, this repository is the decomposition family for both generation 1 and generation 2.
+
 ## Skills In This Repo
 
 ### `parallel-decomposer-skill`
